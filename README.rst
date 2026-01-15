@@ -1,105 +1,162 @@
 sl29.games.2048
 =================
-An implementation of the 2048 game for educational purpose.
+Une implémentation du jeu 2048 à des fins éducatives.
 
-📦 Overview
------------
+.. _readme-vue-d-ensemble:
 
-The goal of this project is to offer a minimal, educational example of how to:
+📦 Vue d’ensemble
+-----------------
 
-- Implement a basic **game** in Python (`2048`)
-- Package it properly with **PEP 621** conventions (`pyproject.toml`)
-- Write and run **unit tests** with `pytest`
-- Generate **documentation** automatically using `Sphinx`
+L'objectif de ce projet est d'offrir un exemple minimal et éducatif de comment :
+
+- Implémenter un **jeu** basique en Python (`2048`)
+- Empaqueter correctement avec les conventions **PEP 621** (`pyproject.toml`)
+- Écrire et exécuter des **tests unitaires** avec `pytest`
+- Générer automatiquement de la **documentation** en utilisant `Sphinx`
+
+.. _readme-installation:
 
 🧩 Installation
 ---------------
 
-It is recommended to work inside a **virtual environment** to avoid dependency conflicts.
+Il est recommandé de travailler dans un **environnement virtuel** pour éviter les conflits de dépendances.
 
-🔧 Create and activate a virtual environment
+🔧 Créer et activer un environnement virtuel
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sur Linux/Mac :
 
 .. code-block:: bash
 
    python3 -m venv games2048
    source games2048/bin/activate
 
-Install in development mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sur Windows :
 
-For development, testing, and documentation:
+.. code-block:: bash
+
+   python -m venv games2048
+   games2048\Scripts\activate
+
+Installer en mode développement
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pour le développement, les tests et la documentation :
 
 .. code-block:: bash
 
    pip install -e .[dev,test,doc]
 
-This will install:
+Cela installera :
 
-- The package itself
-- Development tools (e.g. Jupyter, linters)
-- Test dependencies (pytest, pytest-cov)
-- Documentation tools (Sphinx, sphinx-rtd-theme, etc.)
+- Le package lui-même
+- Les outils de développement (par exemple Jupyter, linters)
+- Les dépendances de test (pytest, pytest-cov)
+- Les outils de documentation (Sphinx, sphinx-rtd-theme, etc.)
 
-Production installation
-~~~~~~~~~~~~~~~~~~~~~~~
+Installation en production
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To install the package as a standard Python package:
+Pour installer le package comme un package Python standard :
 
 .. code-block:: bash
 
    pip install -e .
 
-or build and install from a wheel:
+ou construire et installer depuis une wheel :
 
 .. code-block:: bash
 
    python -m build
    pip install dist/sl29.games.2048-*.whl
 
-Usage Example
--------------
+.. _readme-exemple-d-utilisation:
 
-Here’s how to use the game once installed:
+Exemple d’utilisation
+---------------------
+
+Pour jouer au jeu 2048 en mode texte via l'interface en ligne de commande :
+
+.. code-block:: bash
+
+   python -m sl29.games.cli_2048
+
+Ou avec l'option pour désactiver le nettoyage du terminal (utile pour le débogage) :
+
+.. code-block:: bash
+
+   python -m sl29.games.cli_2048 --no-clear
+
+Les commandes disponibles sont :
+- g : déplacer à gauche
+- d : déplacer à droite
+- h : déplacer en haut
+- b : déplacer en bas
+- q : quitter le jeu
+
+Pour utiliser la logique du jeu dans votre propre code :
 
 .. code-block:: python
 
-   from sl29.games.2048 import Game  # Assuming the main class is Game
-   game = Game()
-   game.start()
-   # Play the game...
+   from sl29.games._2048 import nouvelle_partie, jouer_coup
 
-Running Tests
--------------
+   # Créer une nouvelle partie
+   plateau, score = nouvelle_partie()
 
-Run all tests:
+   # Jouer un coup (par exemple, à gauche)
+   nouveau_plateau, points_gagnes, partie_terminee = jouer_coup(plateau, 'g')
+   score += points_gagnes
+
+.. _readme-executer-les-tests:
+
+Exécuter les tests
+------------------
+
+Exécuter tous les tests :
 
 .. code-block:: bash
 
    pytest
 
-Run tests with coverage:
+Exécuter les tests avec couverture :
 
 .. code-block:: bash
 
    pytest --cov=sl29.games.2048
 
-Generate HTML coverage report:
+Générer un rapport de couverture HTML :
 
 .. code-block:: bash
 
    pytest --cov=sl29.games.2048 --cov-report=html
 
-The HTML report will be generated in the `htmlcov/` directory. Open `htmlcov/index.html` in your web browser to view the coverage details.
+Le rapport HTML sera généré dans le répertoire `htmlcov/`. Ouvrez `htmlcov/index.html` dans votre navigateur web pour voir les détails de couverture.
 
-Building the Documentation
---------------------------
+.. _readme-construire-la-documentation:
 
-The documentation is built with Sphinx and assumes you installed the optional doc dependencies.
+Construire la documentation
+---------------------------
+
+La documentation est construite avec Sphinx et suppose que vous avez installé les dépendances optionnelles de doc.
+
+Sur Linux/Mac :
 
 .. code-block:: bash
 
    cd doc
    make html
 
-The generated HTML files will be in `doc/_build/html/index.html`. Open this file in your web browser to view the documentation.
+Sur Windows :
+
+.. code-block:: bash
+
+   cd doc
+   make.bat html
+
+Ou alternativement sur tous les systèmes :
+
+.. code-block:: bash
+
+   sphinx-build doc _build/html
+
+Les fichiers HTML générés seront dans `doc/_build/html/index.html`. Ouvrez ce fichier dans votre navigateur web pour voir la documentation.
