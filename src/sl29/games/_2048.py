@@ -78,9 +78,20 @@ def _ajouter_tuile(plateau: List[List[int]]) -> List[List[int]]:
     :return: Une nouvelle grille avec une tuile ajoutée.
     :rtype: List[List[int]]
     """
-def _ajouter_tuile(grille)
+def _ajouter_tuile(grille):
     grille = copy.deepcopy(grille)
+
+    plateau = copy.deepcopy(grille)
+    cv = _get_cases_vides(plateau)
+    n = random.randint(0,len(cv)-1)
+    coord = cv[n]
+    ligne = coord[0]
+    col = coord[1]
+    plateau[ligne][col] = 2
+    return plateau
     
+    
+
    
 
 def _supprimer_zeros(ligne: List[int]) -> List[int]:
