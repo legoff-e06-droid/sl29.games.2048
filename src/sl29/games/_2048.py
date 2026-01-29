@@ -1,5 +1,5 @@
 """Module providing the logic of the 2048 game"""
-
+import copy 
 import random
 from typing import List, Tuple
 
@@ -68,7 +68,6 @@ def _get_cases_vides(plateau: List[List[int]]) -> List[Tuple[int, int]]:
                 result.append((j,i))
     return result
 
-    raise NotImplementedError("Fonction _get_cases_vides non implémentée.")
 
 def _ajouter_tuile(plateau: List[List[int]]) -> List[List[int]]:
     """
@@ -79,7 +78,10 @@ def _ajouter_tuile(plateau: List[List[int]]) -> List[List[int]]:
     :return: Une nouvelle grille avec une tuile ajoutée.
     :rtype: List[List[int]]
     """
-    raise NotImplementedError("Fonction _ajouter_tuile non implémentée.")
+def _ajouter_tuile(grille)
+    grille = copy.deepcopy(grille)
+    
+   
 
 def _supprimer_zeros(ligne: List[int]) -> List[int]:
     """
