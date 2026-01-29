@@ -15,7 +15,7 @@ from sl29.games._2048 import (
 )
 def afficher_score(score: int) -> None:
     """
-    Affiche le score du jeu dans le terminal.
+    Affiche le score du jeu dans le terminal.g
 
     :param score: Le score actuel du jeu.
     :type score: int
