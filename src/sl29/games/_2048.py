@@ -17,7 +17,11 @@ def nouvelle_partie() -> Tuple[List[List[int]], int]:
     :return: Une grille TAILLExTAILLE initialisée avec deux tuiles, ainsi que le score à 0.
     :rtype: Tuple[List[List[int]], int]
     """
-    raise NotImplementedError("Fonction nouvelle_partie non implémentée.")
+    grille = _creer_plateau_vide()
+    grille2 = _ajouter_tuile(grille)
+    grille3 = _ajouter_tuile(grille2)
+    return (grille3,0)
+    
 
 def jouer_coup(plateau: List[List[int]], direction: str) -> tuple[List[List[int]], int, bool]:
     """
@@ -150,6 +154,14 @@ def _transposer(plateau): # ajouter les annotations de type
     DOCSTRING À ÉCRIRE
     """
     raise NotImplementedError("Fonction _transposer non implémentée.")
+
+
+
+
+
+
+
+
 
 def _deplacer_haut(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
     """
