@@ -152,7 +152,10 @@ def _deplacer_gauche(plateau) : # ajouter les annotations de type
     """
     DOCSTRING À ÉCRIRE
     """
-    raise NotImplementedError("Fonction _deplacer_gauche non implémentée.")
+    nouveau_plateau = []
+    for ligne in plateau:
+        nouveau_plateau.append(ligne[::-1])
+    return nouveau_plateau
 
 def _inverser_lignes(plateau): # ajouter les annotations de type
     """
