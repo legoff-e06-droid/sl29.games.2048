@@ -135,14 +135,19 @@ def _fusionner(ligne: List[int]) -> Tuple[List[int], int]:
             i += 1 
     return fusion, points
 
-print("N'oubliez pas d'ajouter cette fonction à votre fichier _2048.py")
 
 def _completer_zeros(ligne): # ajouter les annotations de type
     """
     DOCSTRING À ECIRE
     """
-    raise NotImplementedError("Fonction _completer_zeros non implémentée.")
+    
 
+def _completer_zeros(ligne: List[int]) -> List[int]:
+    
+    return ligne + [0] * (TAILLE - len(ligne))
+
+print("N'oubliez pas d'ajouter cette fonction à votre fichier _2048.py et de gérer la constante TAILLE.")
+    
 def _deplacer_gauche(plateau) : # ajouter les annotations de type
     """
     DOCSTRING À ÉCRIRE
