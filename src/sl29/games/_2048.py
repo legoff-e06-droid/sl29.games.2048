@@ -182,21 +182,15 @@ def _deplacer_droite(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
     :return: Un tuple contenant la nouvelle grille après déplacement et les points gagnés.
     :rtype: Tuple[List[List[int]], int]
     """
-    def deplacer_droite(plateau):
+
     nouveau_plateau = []
     nouveaux_points = 0
 
     for ligne in plateau:
-        ligne_inverse = list(reversed(ligne))
-        ligne_sans_zeros = _supprimer_zeros(ligne_inverse)
-        ligne_fusionnee, points = _fusionner(ligne_sans_zeros)
-        nouveaux_points += points
-        ligne_completee = _completer_zeros(ligne_fusionnee)
-        ligne_finale = list(reversed(ligne_completee))
-        nouveau_plateau.append(ligne_finale)
-
-    return nouveau_plateau, nouveaux_points
-
+        plateau_miroir = _inverser_lignes(plateau)
+        nouveau_plateau_miroir, points = _deplacer_gauche(plateau_miroir)
+        nouveau_plateau = _inverser_lignes(nouveau_plateau_miroir)
+    return nouveau_plateau, points
 
 def _transposer(plateau): # ajouter les annotations de type
     """

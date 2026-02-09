@@ -182,19 +182,20 @@ def test__deplacer_droite():
         [0, 0, 4, 4],
         [8, 4, 2, 2]
     ]
-    # Rappel : [2,2,2,2] -> [4,4,0,0] (8 pts)
-    # [8,4,2,2] -> [8,4,4,0] (4 pts)
+    # Rappel : [2,2,2,2] -> [0,0,4,4] (8 pts)
+    # [8,4,2,2] -> [0,8,4,4] (4 pts)
     attendu_p = [
-        [4, 0, 0, 0],
-        [4, 4, 0, 0],
-        [8, 0, 0, 0],
-        [8, 4, 4, 0]
+        [0, 0, 0, 4],
+        [0, 0, 4, 4],
+        [0, 0, 0, 8],
+        [0, 8, 4, 4]
     ]
     attendu_pts = 4 + 8 + 8 + 4 # 24 points
 
-    resultat, points = _deplacer_gauche(plateau)
+    resultat, points = _deplacer_droite(plateau)
     assert resultat == attendu_p
     assert points == attendu_pts
+    print("OK")
 
 def test__transposer():
     print("----> Tests de _transposer...")
